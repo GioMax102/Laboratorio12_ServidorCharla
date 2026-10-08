@@ -1,0 +1,21 @@
+[project]
+name = "charla-servidor"
+version = "0.1.0"
+description = "El servidor de Charla (Práctica 12 de TC2007B): una sala de chat por WebSocket que vive en tu computadora."
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi==0.141.1",
+    "uvicorn[standard]==0.53.0",
+]
+
+# Solo para probar. La imagen de Docker las instala también: las pruebas corren dentro del contenedor.
+[dependency-groups]
+dev = [
+    "pytest==9.1.1",
+    "httpx2==2.13.1",  # el TestClient de FastAPI lo usa por debajo (con httpx, el viejo, avisa que está obsoleto)
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"
